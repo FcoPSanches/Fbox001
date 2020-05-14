@@ -1,0 +1,132 @@
+/* Define a abrangência do elemento html, considerando as bordas */
+*{
+    box-sizing: border-box;
+}
+
+/* Inclui moldura e espaçamentos ao redor dos elementos */
+nav, #logo, #iconLinks, #textLinks, #togleIcons, #avatar{
+    border: 1px solid black;
+    padding: 0.95em;
+    margin: 0.45em;
+}
+
+/* Faz com que os elementos sejam exibidos em linha */
+nav {
+    display:flex;
+}
+
+/* Inclui moldura e espaçamentos ao redor das colunas */ 
+main, #leftColumn, #mainColumn, #rightColumn {
+    border: 1px solid black;
+    padding: 0.95em;
+    margin: 0.45em;
+}
+
+/* Faz com que as colunas sejam exibidos em linha */
+main{
+    display:flex;
+}
+
+/* Inclui moldura e espaçamentos no rodapé */
+footer{
+    border: 1px solid black;
+    padding: 0.6em;
+    margin:0.4em;
+}
+
+/* Faz o alinhamento da barra de menus mantendo o logo e itens do menu no lado esquerdo
+   e o avatar ou togleIcons no lado direito */
+nav{
+    justify-content: center;
+    align-items: center;
+}
+
+#togleIcons, #avatar {
+    margin: 0 0 0 auto;
+}
+
+/* Define a largura das colunas:
+   direita:  25%
+   Central:  50%
+   esquerda: 50% */
+#leftColumn{
+    flex-basis: 25%;
+}
+
+#rightColumn{
+    flex-basis: 25%;
+}
+
+#mainColumn{
+    flex-basis: 50%;
+}
+
+
+/* Medias queries - controlam a exibição em função da largura da tela do dispositivo */
+/* tela com até 30em (480px) */
+    @media screen and (max-width:30em){
+    #togleIcons {display: flex; }
+    #iconLinks, #textLinks, #avatar {
+        display: none; }
+
+    /* Ajuste das larguras das colunas */
+        main{flex-direction: column;}
+
+        #leftColumn{
+            width:98%;
+            padding:0.3em;
+            margin:0.3em auto;
+        }
+
+        #mainColumn{
+            width:98%;
+            padding:0.3em;
+            margin:0.3em auto;
+        }
+}
+
+/* tela entre 30em e 48em (768px) */
+    @media screen and (min-width:30em) 
+    and (max-width: 48em) {
+    #togleIcons, #textLinks {
+        display: none; 
+    }
+    #iconLinks, #avatar {
+        display: flex;
+    }
+
+    /* Ajuste das larguras das colunas */
+        main{flex-direction: column;}
+
+        #leftColumn{
+            width:98%;
+            padding:0.3em;
+            margin:0.3em auto;
+        }
+
+        #mainColumn{
+            width:98%;
+            padding:0.3em;
+            margin:0.3em auto;
+        }
+
+}
+
+/* tela acima de 48em (768px) */
+    @media screen and (min-width:48em){
+    #togleIcons, #iconLinks {
+        display: none;
+    }
+    #textLinks, #avatar {
+        display: flex; }
+
+    /* Ajuste das larguras das colunas */    
+        #main {flex-direction: row;}
+
+        #rightColumn, #leftColumn{
+            flex-basis: 25%;
+        }
+        #mainColumn{
+            flex-basis: 50%;
+        }
+}
